@@ -1,0 +1,6 @@
+Roll: Name: Hindi: Maths: Phys
+1: Isha: 20: 25: 30
+2: Prutha: 100: 90: 95
+
+
+

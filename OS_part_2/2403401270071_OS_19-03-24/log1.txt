@@ -1,0 +1,12 @@
+1: palak: 67: 99: 50
+1 exists
+2: sahil: 100: 88: 55
+2 exists
+2: sahil: 100: 88: 55
+Marks out of range
+3: isha:  85: 89: 95
+3 exists
+5: shruti 49: 57: 0
+5 exists
+5: shruti 49: 57: 0
+Marks out of range

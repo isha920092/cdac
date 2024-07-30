@@ -1,0 +1,166 @@
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git add .
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git commit -m "first"
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'dac@dac-HP-ProDesk-600-G5-PCI-MT.(none)')
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git config user.email "patilisha920@gmail.com"
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git config user.name "isha920092"
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git commit -m "first"
+[main (root-commit) 6b0fa12] first
+ 1 file changed, 7 insertions(+)
+ create mode 100644 hello_world.java
+ 
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git push origin main
+Username for 'https://github.com': isha920092
+Password for 'https://isha920092@github.com': 
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com/isha920092/dac-mar-24-071.git/'
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git push origin main
+Username for 'https://github.com': isha920092 
+Password for 'https://isha920092 @github.com': 
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 319 bytes | 319.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/isha920092/dac-mar-24-071.git
+ * [new branch]      main -> main
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+nothing to commit, working tree clean
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git branch
+* main
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git checkout -b b-1
+Switched to a new branch 'b-1'
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git status
+On branch b-1
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   hello_world.java
+no changes added to commit (use "git add" and/or "git commit -a")
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git add .
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git commit -m "b1 branch"
+[b-1 a5fd769] b1 branch
+ 1 file changed, 1 insertion(+)
+ 
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git push origin b-1
+Username for 'https://github.com': isha920092
+Password for 'https://isha920092@github.com': 
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 296 bytes | 296.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote: 
+remote: Create a pull request for 'b-1' on GitHub by visiting:
+remote:      https://github.com/isha920092/dac-mar-24-071/pull/new/b-1
+remote: 
+To https://github.com/isha920092/dac-mar-24-071.git
+ * [new branch]      b-1 -> b-1
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git checkout -b b-2
+Switched to a new branch 'b-2'
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git branch
+  b-1
+* b-2
+  main
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git status
+On branch b-2
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   hello_world.java
+no changes added to commit (use "git add" and/or "git commit -a")
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git add .
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git commit -m "b2 branch"
+[b-2 5614267] b2 branch
+ 1 file changed, 1 deletion(-)
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git push origin b-2
+Username for 'https://github.com': isha920092
+Password for 'https://isha920092@github.com': 
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 272 bytes | 272.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote: 
+remote: Create a pull request for 'b-2' on GitHub by visiting:
+remote:      https://github.com/isha920092/dac-mar-24-071/pull/new/b-2
+remote: 
+To https://github.com/isha920092/dac-mar-24-071.git
+ * [new branch]      b-2 -> b-2
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git checkout b-1
+Switched to branch 'b-1'
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git merge b-2
+Updating a5fd769..5614267
+Fast-forward
+ hello_world.java | 1 -
+ 1 file changed, 1 deletion(-)
+ 
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git status
+On branch b-1
+nothing to commit, working tree clean
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git merge b-1
+Updating 6b0fa12..5614267
+Fast-forward
+ hello_world.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ 
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git status
+On branch main
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+nothing to commit, working tree clean
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git push origin main
+Username for 'https://github.com': isha920092
+Password for 'https://isha920092@github.com': 
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/isha920092/dac-mar-24-071.git
+   6b0fa12..5614267  main -> main
+   
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~/b1/dac-mar-24-071$ 
+
+

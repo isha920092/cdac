@@ -1,0 +1,13 @@
+For mysql server side :
+sudo docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=dac mysql
+sudo docker ps
+sudo docker exec -it 348ce0a48b82 sh
+mysql -u root -p (in mysql sh)
+
+
+For tomcat :
+sudo docker run -dit -p 8080:8080 tomcat
+sudo docker exec -it c08c8090784c sh
+(in tomcat sh)
+apt-get update
+apt-get install mysql-client

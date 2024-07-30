@@ -1,0 +1,140 @@
+sudo snap install microk8s   --classic   --channel=1.28
+
+Join the group
+sudo usermod   -a   -G microk8s   $USER
+sudo chown   -f   -R   $USER   ~/.kube
+
+alias kubectl='microk8s kubectl'
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl get all
+NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.152.183.1   <none>        443/TCP   12m
+
+
+1. Run tomcat pod
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl run tomcat --image tomcat
+pod/tomcat created
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl get pods
+NAME     READY   STATUS    RESTARTS   AGE
+tomcat   1/1     Running   0          10s
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl get deployments
+No resources found in default namespace.
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl get replicasets
+No resources found in default namespace.
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl get all
+NAME         READY   STATUS    RESTARTS   AGE
+pod/tomcat   1/1     Running   0          51s
+
+NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.152.183.1   <none>        443/TCP   13m
+
+
+2. Run tomcat as deployment
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl create deployment tomcat-dep --image tomcat
+deployment.apps/tomcat-dep created
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl get pods
+NAME                          READY   STATUS              RESTARTS   AGE
+tomcat                        1/1     Running             0          2m16s
+tomcat-dep-679bbfd96c-28z7l   0/1     ContainerCreating   0          4s
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl get deployments
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+tomcat-dep   1/1     1            1           9s
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl get replicasets
+NAME                    DESIRED   CURRENT   READY   AGE
+tomcat-dep-679bbfd96c   1         1         1       12s
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl get all
+NAME                              READY   STATUS    RESTARTS   AGE
+pod/tomcat                        1/1     Running   0          2m28s
+pod/tomcat-dep-679bbfd96c-28z7l   1/1     Running   0          16s
+
+NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.152.183.1   <none>        443/TCP   15m
+
+NAME                         READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/tomcat-dep   1/1     1            1           16s
+
+NAME                                    DESIRED   CURRENT   READY   AGE
+replicaset.apps/tomcat-dep-679bbfd96c   1         1         1       16s
+
+
+3. Scale deployment to have 5 instances
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl scale deployment tomcat-dep --replicas 5
+deployment.apps/tomcat-dep scaled
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl get pods
+NAME                          READY   STATUS    RESTARTS   AGE
+tomcat                        1/1     Running   0          4m18s
+tomcat-dep-679bbfd96c-28z7l   1/1     Running   0          2m6s
+tomcat-dep-679bbfd96c-5mpmr   1/1     Running   0          40s
+tomcat-dep-679bbfd96c-5mrfd   1/1     Running   0          40s
+tomcat-dep-679bbfd96c-sn442   1/1     Running   0          40s
+tomcat-dep-679bbfd96c-hhwcw   1/1     Running   0          40s
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl get deployments
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+tomcat-dep   5/5     5            5           99s
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl get replicasets
+NAME                    DESIRED   CURRENT   READY   AGE
+tomcat-dep-679bbfd96c   5         5         5       104s
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl get all
+NAME                              READY   STATUS    RESTARTS   AGE
+pod/tomcat                        1/1     Running   0          4m
+pod/tomcat-dep-679bbfd96c-28z7l   1/1     Running   0          108s
+pod/tomcat-dep-679bbfd96c-5mpmr   1/1     Running   0          22s
+pod/tomcat-dep-679bbfd96c-5mrfd   1/1     Running   0          22s
+pod/tomcat-dep-679bbfd96c-sn442   1/1     Running   0          22s
+pod/tomcat-dep-679bbfd96c-hhwcw   1/1     Running   0          22s
+
+NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.152.183.1   <none>        443/TCP   17m
+
+NAME                         READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/tomcat-dep   5/5     5            5           108s
+
+NAME                                    DESIRED   CURRENT   READY   AGE
+replicaset.apps/tomcat-dep-679bbfd96c   5         5         5       108s
+
+
+4. Scale deployent to have 2 instances
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl scale deployment tomcat-dep --replicas 2
+deployment.apps/tomcat-dep scaled
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl get pods
+NAME                          READY   STATUS    RESTARTS   AGE
+tomcat                        1/1     Running   0          4m39s
+tomcat-dep-679bbfd96c-28z7l   1/1     Running   0          2m27s
+tomcat-dep-679bbfd96c-sn442   1/1     Running   0          61s
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl get deployments
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+tomcat-dep   2/2     2            2           2m32s
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl get replicasets
+NAME                    DESIRED   CURRENT   READY   AGE
+tomcat-dep-679bbfd96c   2         2         2       2m36s
+
+dac@dac-HP-ProDesk-600-G5-PCI-MT:~$ kubectl get all
+NAME                              READY   STATUS    RESTARTS   AGE
+pod/tomcat                        1/1     Running   0          4m53s
+pod/tomcat-dep-679bbfd96c-28z7l   1/1     Running   0          2m41s
+pod/tomcat-dep-679bbfd96c-sn442   1/1     Running   0          75s
+
+NAME                 TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+service/kubernetes   ClusterIP   10.152.183.1   <none>        443/TCP   17m
+
+NAME                         READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/tomcat-dep   2/2     2            2           2m41s
+
+NAME                                    DESIRED   CURRENT   READY   AGE
+replicaset.apps/tomcat-dep-679bbfd96c   2         2         2       2m41s
+

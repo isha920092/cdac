@@ -1,0 +1,5 @@
+rollNo: name:marks_hindi: marks_maths: marks_physics
+1: palak: 67: 99: 50
+2: sahil: 100: 88: 55
+3: isha:  85: 89: 95
+5: shruti 49: 57: 0
